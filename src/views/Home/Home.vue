@@ -9,6 +9,8 @@
         <lay-icon type="layui-icon-face-smile" color="#FF5722" size="24px"></lay-icon> &nbsp;
         <div>{{ mouse.x }}</div>
         <div>{{ mouse.y }}</div>
+        <div>{{ currentLang }}</div>
+        <button @click="switchCurrentLang('en')"> click</button>
     </div>
 </template>
 
@@ -16,7 +18,12 @@
 
 import { useMouse } from '@vueuse/core'
 import { reactive } from 'vue';
+import { useInitStore } from '@/basic_service/stores';
+import { storeToRefs } from 'pinia';
 
+const store = useInitStore()
+const { currentLang } = storeToRefs(store)
+const {switchCurrentLang} = store
 const mouse = reactive(useMouse())
 </script>
 
