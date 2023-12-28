@@ -1,5 +1,5 @@
 const Home = () => import('@/views/Home/Home.vue')
-const Error = () => import('@/views/Error/Error.vue')
+const NotFound = () => import('@/views/NotFound/NotFound.vue')
 
 export const routes = [
     {
@@ -9,8 +9,8 @@ export const routes = [
     },
     {
         path: '/404',
-        name: 'Error',
-        component: Error
+        name: 'NotFound',
+        component: NotFound
     },
     // 自定义404页面捕获解析不了的url并重定向为404，放在routes最后面
     {
