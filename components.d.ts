@@ -8,6 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     GameCard: typeof import('./src/components/GameCard.vue')['default']
+    LayButton: typeof import('@layui/layui-vue')['LayButton']
+    LayException: typeof import('@layui/layui-vue')['LayException']
     ListCard: typeof import('./src/components/ListCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
