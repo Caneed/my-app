@@ -1,3 +1,4 @@
+import { Lang } from "@/domain/Languages";
 import { Language } from "@/domain/types/LangType";
 import { defineStore } from "pinia";
 import { ref } from "vue";
@@ -9,7 +10,7 @@ import { ref } from "vue";
 export const useInitStore = defineStore('initStore', () => {
     // ---------------------------国际化i18n模块-------------------------------------
     // 当前语言
-    const currentLang = ref<Language>('zh_CN')
+    const currentLang = ref<Language>(Lang.Lang_CN)
 
     /**
      * 切换当前语言
@@ -18,15 +19,7 @@ export const useInitStore = defineStore('initStore', () => {
     function switchCurrentLang(lang: Language) {
         currentLang.value = lang
     }
-
-    /**
-     * 获取当前语言
-     * @returns 当前语言
-    */
-    function getCurrentLang(): Language {
-        return currentLang.value
-    }
     // ---------------------------国际化i18n模块-------------------------------------
 
-    return { currentLang, switchCurrentLang, getCurrentLang }
+    return { currentLang, switchCurrentLang }
 })

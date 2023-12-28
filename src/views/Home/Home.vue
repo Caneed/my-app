@@ -11,7 +11,7 @@
         <div>{{ mouse.y }}</div>
         <div>{{ currentLang }}</div>
         <button @click="switchCurrentLang('en')"> click</button>
-        <div>{{ $t('message.hello') }}</div>
+        <div>{{ $t('hello') }}</div>
     </div>
 </template>
 
