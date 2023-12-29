@@ -8,7 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     GameCard: typeof import('./src/components/Games/GameCard.vue')['default']
-    GameCarousel: typeof import('./src/components/Games/GameCarousel.vue')['default']
+    GameCarousel: typeof import('./src/components/games/GameCarousel.vue')['default']
     LayButton: typeof import('@layui/layui-vue')['LayButton']
     LayCarousel: typeof import('@layui/layui-vue')['LayCarousel']
     LayCarouselItem: typeof import('@layui/layui-vue')['LayCarouselItem']

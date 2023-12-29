@@ -16,7 +16,18 @@ export default defineConfig({
   })],
   resolve: {
     alias: {
-      '@': join(__dirname, 'src')
+      '@': join(__dirname, 'src'),
+    }
+  },
+  // 跨域配置
+  server: {
+    proxy: {
+      '/steamApi': {
+        target: 'http://api.steampowered.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/steamApi/, '')
+      }
+
     }
   }
 })

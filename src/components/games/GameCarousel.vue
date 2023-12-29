@@ -1,5 +1,5 @@
 <template>
-  <lay-carousel v-model="active3" indicator="outside">
+  <lay-carousel v-model="active" indicator="outside">
     <lay-carousel-item id="1">
       <div style="color: white;text-align: center;width:100%;height:300px;line-height:300px;background-color:#009688;">条目一
       </div>
@@ -24,7 +24,7 @@ import { ref } from 'vue';
 
 
 
-const active3 = ref('1')
+const active = ref('1')
 </script>
 
 <style scoped></style>
