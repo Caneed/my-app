@@ -32,4 +32,4 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped></style>@/domain/basic_service/injectKeys
+<style scoped></style>
