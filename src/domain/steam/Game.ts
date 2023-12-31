@@ -11,7 +11,7 @@
  * @member playtime_windows_forever windows系统的游玩时间
  * @member rtime_last_played 上一次玩的日期
  */
-type Game = {
+export type Game = {
     appid: string
     has_community_visible_stats: boolean
     img_icon_url: string
@@ -24,4 +24,14 @@ type Game = {
     rtime_last_played: string
 }
 
-export default Game
+/**
+ * 游戏全量数据
+ * @member game_count 游戏数量
+ * @member games 游戏对象的数组
+ */
+type GameDatas ={
+    game_count:number
+    games:Array<Game>
+}
+
+export default GameDatas

@@ -7,9 +7,9 @@ import { BaseSteamReqV1 } from "../BaseRequest";
  * @member appids_filter 将结果限制在传入的应用中
  */
 class GetOwnedGames extends BaseSteamReqV1 {
-    private include_appinfo: boolean
-    private include_played_free_games: boolean
-    private appids_filter?: string
+    public include_appinfo: boolean
+    public include_played_free_games: boolean
+    public appids_filter?: string
     constructor() {
         super()
         this.include_appinfo = true
