@@ -55,4 +55,4 @@ onBeforeMount(async () => {
 })
 </script>
 
-<style scoped></style>
+<style scoped></style>@/basic_service/request/gameService/steamApis
