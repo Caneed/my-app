@@ -27,9 +27,14 @@ export default defineConfig({
         target: 'http://api.steampowered.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/steamApi/, '')
+      },
+      '/steamStoreApi': {
+        target: 'https://store.steampowered.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/steamStoreApi/, '')
       }
     }
   },
   // 环境变量文件的目录
-  envDir:'env'
+  envDir: 'env'
 })

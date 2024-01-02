@@ -9,14 +9,16 @@
             </div>
         </div>
     </div>
+    {{ }}
 </template>
 
 <script setup lang="ts">
-import { queryUserGamesInfo } from '@/basic_service/axios/gameService/steamApis'
+import { queryUserGamesInfo, querySupportedApiList, queryGameDetail } from '@/basic_service/axios/gameService/steamApis'
+import { BaseSteamReqV1 } from '@/domain/requests/steamApis/BaseRequest';
 import GetOwnedGames from '@/domain/requests/steamApis/v1/GetOwnedGames'
 import { getHandler } from '@/basic_service/axios/api'
 import { onBeforeMount, ref } from 'vue';
-import GameDatas from '@/domain/steam/Game';
+import { GameDatas } from '@/domain/steam/Game';
 
 
 
@@ -28,6 +30,7 @@ let gameInfo = ref<GameDatas>({
     games: []
 })
 
+let gameDetails = ref<any>()
 /**
  * 从api获取游戏数据
  */
@@ -36,10 +39,18 @@ const getOwnedGameList = async () => {
     return data.response
 }
 
+const getGameDetails = async (appids: string) => {
+    const data = await getHandler(queryGameDetail, { appids })
+    return data
+}
+
 onBeforeMount(async () => {
     await getOwnedGameList()
     gameInfo.value = await getOwnedGameList()
+
+    gameDetails.value = await getGameDetails('3590')
+    console.log(gameDetails.value['3590'].data)
 })
 </script>
 
-<style scoped></style>@/basic_service/request/gameService/steamApis
+<style scoped></style>

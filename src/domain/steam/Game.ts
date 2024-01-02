@@ -29,9 +29,53 @@ export type Game = {
  * @member game_count 游戏数量
  * @member games 游戏对象的数组
  */
-type GameDatas ={
-    game_count:number
-    games:Array<Game>
+export type GameDatas = {
+    game_count: number
+    games: Array<Game>
 }
 
-export default GameDatas
+export type GameDetails = {
+    about_the_game: string
+    achievements: Array<Achievement>
+}
+
+
+/**
+ * 成就
+ * @member hightlighted 高光
+ * @member total 总数
+ * @member background 背景图
+ * @member background_raw 原图
+ * @member caspule_image 胶囊图
+ * @member caspule_imageV5 胶囊图V5
+ */
+type Achievement = {
+    hightlighted: Array<Highlighted>
+    total: number
+    background:string
+    background_raw:string
+    caspule_image:string
+    caspule_imageV5:string
+    categories:Array<Category>
+}
+
+
+/**
+ * 高光
+ * @member name 名字
+ * @member path 图片路径
+ */
+type Highlighted = {
+    name: string
+    path: string
+}
+
+/**
+ * 分类
+ * @member description 描述
+ * @member id id
+ */
+type Category = {
+    description:string
+    id:number
+}

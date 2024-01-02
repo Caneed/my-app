@@ -5,6 +5,7 @@ import { BaseSteamReqV1 } from "../BaseRequest";
  * @member include_appinfo 是否获取更多的游戏数据(名称，图标等)默认为true
  * @member include_played_free_games 是否包含免费游戏
  * @member appids_filter 将结果限制在传入的应用中
+ * @member language 语言
  */
 class GetOwnedGames extends BaseSteamReqV1 {
     public include_appinfo: boolean
