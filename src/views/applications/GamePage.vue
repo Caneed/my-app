@@ -1,23 +1,25 @@
 <template>
     <div class="flex flex-wrap justify-evenly">
         <div v-for="(item, index) in data.games" :key="index">
-        <div class="min-h-24 max-h-36 min-w-36 max-w-40 border-solid border-gray-950 flex-col">
+        <div class="min-h-24 max-h-36 min-w-36 max-w-40 border-solid border-2 border-sky-500 flex-col">
             <span>{{ item.name }}</span>
             <span>
                 {{ item.playtime_forever }}
             </span>
+            <img :src="buildIconUrl(item)">
         </div>
     </div>
+    {{ recentGames }}
     </div>
 </template>
 
 <script setup lang="ts">
-import { queryUserGamesInfo } from '@/basic_service/gameService/steamApis'
+import { queryUserGamesInfo, queryUserRecentPlayedGames } from '@/basic_service/gameService/steamApis'
 import GetOwnedGames from '@/domain/requests/steamApis/v1/GetOwnedGames'
 import { inject, onBeforeMount, ref } from 'vue';
 import { axiosKey } from '@/domain/basic_service/injectKeys';
-import GameDatas from '@/domain/steam/Game';
-// import  GameDatas from '@/domain/steam/Game';
+import GameDatas, { Game } from '@/domain/steam/Game';
+import getRecentPlayedGames from '@/domain/requests/steamApis/v1/GetRecentPlayedGames'
 
 
 /**
@@ -30,6 +32,7 @@ function getAxios() {
     }
     return axios
 }
+
 /**
  * 游戏数据并初始化为空
  */
@@ -37,6 +40,8 @@ let data = ref<GameDatas>({
     game_count:0,
     games:[]
 })
+
+let recentGames = ref<any>({})
 
 /**
  * 从api获取游戏数据
@@ -50,8 +55,22 @@ const getOwnedGameList = async () => {
     return res.data.response
 }
 
+const getRecentGameList = async() =>{
+    const res = await getAxios().get(queryUserRecentPlayedGames,{
+        params:{
+            ...new getRecentPlayedGames()
+        }
+    })
+    return res
+}
+
+const buildIconUrl = (item:Game)=>{
+    return `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${item.appid}/${item.img_icon_url}.jpg`
+}
+
 onBeforeMount(async () => {
-    data.value = await getOwnedGameList()
+    // data.value = await getOwnedGameList()
+    recentGames.value = (await getRecentGameList()).data.response
 })
 </script>
 

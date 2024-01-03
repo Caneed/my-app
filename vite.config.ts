@@ -26,6 +26,11 @@ export default defineConfig({
         target: 'http://api.steampowered.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/steamApi/, '')
+      },
+      '/steamPtr':{
+        target:'http://partner.steam-api.com',
+        changeOrigin:true,
+        rewrite:(path)=> path.replace(/^\/steamPtr/,'')
       }
 
     }

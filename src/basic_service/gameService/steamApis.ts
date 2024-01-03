@@ -10,3 +10,11 @@ export const queryUserInfo:string = 'steamApi/ISteamUser/GetPlayerSummaries/v2/'
  * @param steamId
  */
 export const queryUserGamesInfo:string = 'steamApi/IPlayerService/GetOwnedGames/v1/'
+
+/**
+ * 获取用户最近游玩的游戏
+ * @param key
+ * @param steamId
+ * @param count 游戏数量
+ */
+export const queryUserRecentPlayedGames:string = 'steamApi/IPlayerService/GetRecentlyPlayedGames/v1/'
