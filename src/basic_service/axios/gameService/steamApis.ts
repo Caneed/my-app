@@ -3,21 +3,21 @@
  * @param key
  * @param steamId
  */
-export const querySupportedApiList: string = 'steamApi/ISteamWebAPIUtil/GetSupportedAPIList/v1/'
+export const GetSupportedAPIList_URL: string = 'steamApi/ISteamWebAPIUtil/GetSupportedAPIList/v1/'
 
 /**
  * 获取steam用户状态的api
  * @parm key 
  * @param steamIds
  */
-export const queryUserInfo: string = 'steamApi/ISteamUser/GetPlayerSummaries/v2/'
+export const GetPlayerSummaries_URL: string = 'steamApi/ISteamUser/GetPlayerSummaries/v2/'
 /**
  * 获取用户库存的api
  * @parm key 
  * @param steamId
  */
-export const queryUserGamesInfo: string = 'steamApi/IPlayerService/GetOwnedGames/v1/'
+export const GetOwnedGames_URL: string = 'steamApi/IPlayerService/GetOwnedGames/v1/'
 
-export const queryRecentPlayedGame: string = 'steamApi/IPlayerService/GetRecentlyPlayedGames/v1/'
+export const GetRecentlyPlayedGames_URL: string = 'steamApi/IPlayerService/GetRecentlyPlayedGames/v1/'
 
-export const queryGameDetail: string = 'steamStoreApi/api/appdetails/'
+export const appdetails_URL: string = 'steamStoreApi/api/appdetails/'

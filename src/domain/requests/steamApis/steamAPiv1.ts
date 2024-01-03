@@ -1,5 +1,4 @@
-import { BaseSteamReqV1 } from "../BaseRequest";
-
+import { BaseSteamReqV1 } from "./BaseRequest"
 /**
  * @class 获取用户拥有的游戏请求参数类
  * @member include_appinfo 是否获取更多的游戏数据(名称，图标等)默认为true
@@ -7,7 +6,7 @@ import { BaseSteamReqV1 } from "../BaseRequest";
  * @member appids_filter 将结果限制在传入的应用中
  * @member language 语言
  */
-class GetOwnedGames extends BaseSteamReqV1 {
+export class GetOwnedGamesReq extends BaseSteamReqV1 {
     public include_appinfo: boolean
     public include_played_free_games: boolean
     public appids_filter?: string
@@ -18,4 +17,26 @@ class GetOwnedGames extends BaseSteamReqV1 {
     }
 }
 
-export default GetOwnedGames
+/**
+ * 获取用户等级
+ * @class
+ */
+export class GetSteamAuthLevelReq extends BaseSteamReqV1 {
+    constructor() {
+        super()
+    }
+}
+
+/**
+ * 获取最近游玩的游戏
+ * @member count 可选，未设置为全部
+ */
+export class GetRecentlyPlayedGamesReq extends BaseSteamReqV1 {
+    public count?: string
+    constructor(count?: string) {
+        super()
+        if (count) {
+            this.count = count
+        }
+    }
+}

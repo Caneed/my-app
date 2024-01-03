@@ -1,27 +1,36 @@
 <template>
     <div class="flex flex-wrap justify-evenly">
-        <div v-for="(item, index) in gameInfo.games" :key="index">
-            <div class="min-h-24 max-h-36 min-w-36 max-w-40 border-solid border-gray-950 flex-col">
-                <span>{{ item.name }}</span>
-                <span>
-                    {{ item.playtime_forever }}
-                </span>
-            </div>
+        <div v-for="(item, index) in gameInfo.games" :key="index" class="">
+            <!-- 骨架屏 -->
+            <lay-skeleton :loading="loading" animated>
+                <!-- 骨架屏插槽部分 -->
+                <template #skeleton>
+                    <div class="min-h-24 max-h-36 min-w-36 max-w-40 border-solid border-gray-950 flex-col">
+                        <lay-skeleton-item type="image" class="min-h-6 max-h-10 min-w-6 max-w-10" />
+                        <lay-skeleton-item type="p"/>
+                        <lay-skeleton-item type="p"/>
+                    </div>
+                </template>
+                <!-- 实际渲染部分 -->
+                <div class="min-h-24 max-h-36 min-w-36 max-w-40 border-solid border-gray-950 flex-col">
+                    <img :src="buildImageUrl(item)" class="min-h-6 max-h-10 min-w-6 max-w-10 bg-auto" />
+                    <span>{{ item.name }}</span>
+                    <span>
+                        {{ item.playtime_forever }}
+                    </span>
+                </div>
+            </lay-skeleton>
         </div>
     </div>
-    {{ }}
 </template>
 
 <script setup lang="ts">
-import { queryUserGamesInfo, querySupportedApiList, queryGameDetail } from '@/basic_service/axios/gameService/steamApis'
-import { BaseSteamReqV1 } from '@/domain/requests/steamApis/BaseRequest';
-import GetOwnedGames from '@/domain/requests/steamApis/v1/GetOwnedGames'
-import { getHandler } from '@/basic_service/axios/api'
 import { onBeforeMount, ref } from 'vue';
-import { GameDatas } from '@/domain/steam/Game';
+import { Game, GameDatas } from '@/domain/steam/Game';
+import { getOwnedGames } from '@/utils/steamapiUtils'
 
-
-
+// 是否正在加载
+let loading = ref<boolean>(true)
 /**
  * 游戏数据并初始化为空
  */
@@ -30,27 +39,25 @@ let gameInfo = ref<GameDatas>({
     games: []
 })
 
-let gameDetails = ref<any>()
 /**
- * 从api获取游戏数据
+ * 获取图标url
+ * @param game 游戏
  */
-const getOwnedGameList = async () => {
-    const data = await getHandler(queryUserGamesInfo, { ...new GetOwnedGames() })
-    return data.response
-}
-
-const getGameDetails = async (appids: string) => {
-    const data = await getHandler(queryGameDetail, { appids })
-    return data
+const buildImageUrl = (game: Game) => {
+    return `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
 }
 
 onBeforeMount(async () => {
-    await getOwnedGameList()
-    gameInfo.value = await getOwnedGameList()
-
-    gameDetails.value = await getGameDetails('3590')
-    console.log(gameDetails.value['3590'].data)
+    getOwnedGames().then(res => {
+        if (res) {
+            gameInfo.value = res
+            setTimeout(() => {
+                loading.value = false
+            }, 1500)
+        }
+    })
 })
+
 </script>
 
 <style scoped></style>
