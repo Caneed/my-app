@@ -1,23 +1,25 @@
 <template>
-    <div class="flex flex-wrap justify-evenly">
+    <div class="flex-col justify-evenly">
         <div v-for="(item, index) in gameInfo.games" :key="index" class="">
             <!-- 骨架屏 -->
             <lay-skeleton :loading="loading" animated>
                 <!-- 骨架屏插槽部分 -->
                 <template #skeleton>
-                    <div class="min-h-24 max-h-36 min-w-36 max-w-40 border-solid border-gray-950 flex-col">
+                    <div class="item">
                         <lay-skeleton-item type="image" class="min-h-6 max-h-10 min-w-6 max-w-10" />
-                        <lay-skeleton-item type="p"/>
-                        <lay-skeleton-item type="p"/>
+                        <lay-skeleton-item type="p" />
+                        <lay-skeleton-item type="p" />
                     </div>
                 </template>
                 <!-- 实际渲染部分 -->
-                <div class="min-h-24 max-h-36 min-w-36 max-w-40 border-solid border-gray-950 flex-col">
-                    <img :src="buildImageUrl(item)" class="min-h-6 max-h-10 min-w-6 max-w-10 bg-auto" />
-                    <span>{{ item.name }}</span>
-                    <span>
-                        {{ item.playtime_forever }}
-                    </span>
+                <div class="item">
+                    <img :src="buildImageUrl(item)" class="bg-auto min-w-22 max-w-26 bg-auto" />
+                    <div>
+                        <div>{{ item.name }}</div>
+                        <div>
+                            {{ buildPlayTime(item) }}
+                        </div>
+                    </div>
                 </div>
             </lay-skeleton>
         </div>
@@ -47,17 +49,39 @@ const buildImageUrl = (game: Game) => {
     return `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
 }
 
+/**
+ * 返回游戏时间(分钟-小时)保留两位
+ * @param game 游戏
+ */
+const buildPlayTime = (game: Game) => {
+    return (parseInt(game.playtime_forever) / 60).toFixed(2)
+}
+
+/**
+ * 根据游戏时间进行排序
+ */
+const sortGames = () => {
+    gameInfo.value.games.sort((prev: Game, next: Game) => {
+        return parseInt(next.playtime_forever) - parseInt(prev.playtime_forever)
+    })
+}
+
 onBeforeMount(async () => {
     getOwnedGames().then(res => {
         if (res) {
             gameInfo.value = res
+            sortGames()
             setTimeout(() => {
                 loading.value = false
             }, 1500)
         }
-    })
+    })    
 })
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.item {
+    @apply border-solid border-gray-950 flex justify-between h-20 bg-gradient-to-r from-cyan-500 to-blue-500 m-8 p-2 rounded-l-lg;
+}
+</style>
