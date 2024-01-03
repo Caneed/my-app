@@ -1,4 +1,4 @@
-import { key, steamId } from "@/basic_service/gameService/steamKey"
+import { key, steamId } from "@/basic_service/axios/gameService/steamKey"
 
 /**
  * 基础steamApi的请求参数(v1版本)

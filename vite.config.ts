@@ -14,6 +14,7 @@ export default defineConfig({
   Components({
     resolvers: [LayuiVueResolver()]
   })],
+  // 路径映射
   resolve: {
     alias: {
       '@': join(__dirname, 'src'),
@@ -27,12 +28,13 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/steamApi/, '')
       },
-      '/steamPtr':{
-        target:'http://partner.steam-api.com',
-        changeOrigin:true,
-        rewrite:(path)=> path.replace(/^\/steamPtr/,'')
+      '/steamStoreApi': {
+        target: 'https://store.steampowered.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/steamStoreApi/, '')
       }
-
     }
-  }
+  },
+  // 环境变量文件的目录
+  envDir: 'env'
 })

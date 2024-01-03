@@ -6,8 +6,6 @@ import App from './App.vue'
 import Layui from '@layui/layui-vue'
 import '@layui/layui-vue/lib/index.css'
 import pinia from './basic_service/stores'
-import axios from 'axios'
-import { axiosKey } from './domain/basic_service/injectKeys'
 import i18n from './basic_service/i18n'
 
 
@@ -16,5 +14,4 @@ createApp(App)
     .use(router)
     .use(i18n)
     .use(pinia)
-    .provide(axiosKey, axios)
     .mount('#app')
