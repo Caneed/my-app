@@ -30,7 +30,6 @@
 import { onBeforeMount, ref } from 'vue';
 import { Game, GameDatas } from '@/domain/steam/Game';
 import { getOwnedGames } from '@/utils/steamapiUtils'
-
 // 是否正在加载
 let loading = ref<boolean>(true)
 /**
