@@ -1,4 +1,5 @@
 <template>
+    <div>{{ recentGames }}</div>
     <div class="flex-col justify-evenly">
         <div v-for="(item, index) in gameInfo.games" :key="index" class="">
             <!-- 骨架屏 -->
@@ -29,7 +30,8 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue';
 import { Game, GameDatas } from '@/domain/steam/Game';
-import { getOwnedGames } from '@/utils/steamapiUtils'
+import { RecentGames } from '@/domain/steam/RecentGames'
+import { getOwnedGames, getRecentPlayedGames } from '@/utils/steamapiUtils'
 import { Router, useRouter } from 'vue-router';
 // 是否正在加载
 let loading = ref<boolean>(true)
@@ -42,6 +44,9 @@ let gameInfo = ref<GameDatas>({
     game_count: 0,
     games: []
 })
+
+let recentGames = ref<RecentGames>()
+
 
 /**
  * 获取图标url
@@ -89,6 +94,7 @@ onBeforeMount(async () => {
             }, 1500)
         }
     })
+    recentGames.value = await getRecentPlayedGames()
 })
 
 </script>

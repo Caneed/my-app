@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { GameDetails } from '@/domain/steam/Game';
+import { GameDetails } from '@/domain/steam/GameDetails';
 import { getGameDetails } from '@/utils/steamapiUtils';
 import { onBeforeMount, ref } from 'vue';
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
