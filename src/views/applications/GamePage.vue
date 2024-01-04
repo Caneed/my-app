@@ -30,9 +30,11 @@
 import { onBeforeMount, ref } from 'vue';
 import { Game, GameDatas } from '@/domain/steam/Game';
 import { getOwnedGames } from '@/utils/steamapiUtils'
-import { router } from '@/basic_service/router';
+import { Router, useRouter } from 'vue-router';
 // 是否正在加载
 let loading = ref<boolean>(true)
+// 路由对象
+const router:Router =useRouter()
 /**
  * 游戏数据并初始化为空
  */
@@ -49,6 +51,10 @@ const buildImageUrl = (game: Game) => {
     return `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
 }
 
+/**
+ * 跳转到详情页并传参appid
+ * @param appid appid
+ */
 const toDetail = (appid: string) => {
     router.push({
         name: 'gameDetail',

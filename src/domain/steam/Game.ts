@@ -64,7 +64,7 @@ export type GameDetails = {
     detailed_description: string
     developers: Array<string>
     header_image: string
-    platforms: Record<string, boolean>
+    platforms: Record<Platforms, boolean>
     name: string
     price_overview: Price_overview
     release_date: Release_date
@@ -72,6 +72,8 @@ export type GameDetails = {
     steam_appid: string
 }
 
+
+type Platforms = 'windows'|'linux'|'mac'
 
 /**
  * 成就

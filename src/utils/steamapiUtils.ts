@@ -10,6 +10,11 @@ export const getOwnedGames = async () => {
     return data.response
 }
 
+/**
+ * 通过appid查询游戏详情
+ * @param appids appids
+ * @returns 游戏详情信息
+ */
 export const getGameDetails = async (appids: string) => {
     const data = await getHandler(appdetails_URL, { appids })
     return data[appids].data

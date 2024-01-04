@@ -1,4 +1,19 @@
 {
     "hello": "你好",
-    "hour":"小时"
+    "hour":"小时",
+    "colon":":",
+    "game":{
+        "name":"游戏名",
+        "description":"游戏描述",
+        "about_the_game":"关于游戏",
+        "controller_supprot":"控制器支持",
+        "platform_support":"系统支持",
+        "release_date":"发行时间",
+        "waiting_for_release":"未发行",
+        "platfrom":{
+            "windows":"windows",
+            "mac":"mac",
+            "Linux":"Linux"
+        }
+    }
 }

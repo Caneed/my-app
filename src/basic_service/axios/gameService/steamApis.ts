@@ -17,7 +17,12 @@ export const GetPlayerSummaries_URL: string = 'steamApi/ISteamUser/GetPlayerSumm
  * @param steamId
  */
 export const GetOwnedGames_URL: string = 'steamApi/IPlayerService/GetOwnedGames/v1/'
-
+/**
+ * 获取最近游戏的信息
+ */
 export const GetRecentlyPlayedGames_URL: string = 'steamApi/IPlayerService/GetRecentlyPlayedGames/v1/'
-
+/**
+ * 获取游戏详细信息
+ * @param appIds
+ */
 export const appdetails_URL: string = 'steamStoreApi/api/appdetails/'
