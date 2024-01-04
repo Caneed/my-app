@@ -1,6 +1,7 @@
 const Home = () => import('@/views/home/Home.vue')
 const NotFound = () => import('@/views/error/NotFound.vue')
 const Game = () => import('@/views/applications/GamePage.vue')
+const GameDetail = () => import('@/views/GameDetail.vue')
 
 export const routes = [
     {
@@ -10,9 +11,12 @@ export const routes = [
     }, {
         path: '/games',
         name: 'games',
-        component: Game
-    },
-    {
+        component: Game,
+    }, {
+        path: '/gameDetail',
+        name: 'gameDetail',
+        component: GameDetail
+    },{
         path: '/404',
         name: 'NotFound',
         component: NotFound

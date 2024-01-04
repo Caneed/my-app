@@ -10,6 +10,8 @@ declare module 'vue' {
     GameCard: typeof import('./src/components/games/GameCard.vue')['default']
     GameCarousel: typeof import('./src/components/games/GameCarousel.vue')['default']
     GameList: typeof import('./src/components/games/GameList.vue')['default']
+    LayButton: typeof import('@layui/layui-vue')['LayButton']
+    LayException: typeof import('@layui/layui-vue')['LayException']
     LaySkeleton: typeof import('@layui/layui-vue')['LaySkeleton']
     LaySkeletonItem: typeof import('@layui/layui-vue')['LaySkeletonItem']
     RouterLink: typeof import('vue-router')['RouterLink']

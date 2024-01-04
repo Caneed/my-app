@@ -12,7 +12,7 @@
                     </div>
                 </template>
                 <!-- 实际渲染部分 -->
-                <div class="item">
+                <div class="item" @click="toDetail(item.appid)">
                     <img :src="buildImageUrl(item)" class="bg-auto min-w-22 max-w-26 bg-auto" />
                     <div>
                         <div>{{ item.name }}</div>
@@ -30,6 +30,7 @@
 import { onBeforeMount, ref } from 'vue';
 import { Game, GameDatas } from '@/domain/steam/Game';
 import { getOwnedGames } from '@/utils/steamapiUtils'
+import { router } from '@/basic_service/router';
 // 是否正在加载
 let loading = ref<boolean>(true)
 /**
@@ -46,6 +47,13 @@ let gameInfo = ref<GameDatas>({
  */
 const buildImageUrl = (game: Game) => {
     return `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
+}
+
+const toDetail = (appid: string) => {
+    router.push({
+        name: 'gameDetail',
+        query: { appid }
+    })
 }
 
 /**
