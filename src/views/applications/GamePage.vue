@@ -17,7 +17,7 @@
                     <div>
                         <div>{{ item.name }}</div>
                         <div>
-                            {{ buildPlayTime(item) }}
+                            {{ buildPlayTime(item) + $t('hour') }}
                         </div>
                     </div>
                 </div>
@@ -74,13 +74,13 @@ onBeforeMount(async () => {
                 loading.value = false
             }, 1500)
         }
-    })    
+    })
 })
 
 </script>
 
 <style scoped>
 .item {
-    @apply border-solid border-gray-950 flex justify-between h-20 bg-gradient-to-r from-cyan-500 to-blue-500 m-8 p-2 rounded-l-lg;
+    @apply border-solid flex justify-between h-20 m-8 p-2 rounded-l-lg bg-[#303841] hover:opacity-70 cursor-pointer;
 }
 </style>
