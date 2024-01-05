@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BarChart: typeof import('./src/components/charts/BarChart.vue')['default']
     GameCard: typeof import('./src/components/games/GameCard.vue')['default']
     GameCarousel: typeof import('./src/components/games/GameCarousel.vue')['default']
     GameList: typeof import('./src/components/games/GameList.vue')['default']
@@ -15,6 +16,8 @@ declare module 'vue' {
     LayException: typeof import('@layui/layui-vue')['LayException']
     LaySkeleton: typeof import('@layui/layui-vue')['LaySkeleton']
     LaySkeletonItem: typeof import('@layui/layui-vue')['LaySkeletonItem']
+    LayTab: typeof import('@layui/layui-vue')['LayTab']
+    LayTabItem: typeof import('@layui/layui-vue')['LayTabItem']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToolTips: typeof import('./src/components/base/ToolTips.vue')['default']

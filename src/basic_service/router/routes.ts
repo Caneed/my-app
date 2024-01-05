@@ -1,6 +1,6 @@
 const Home = () => import('@/views/home/Home.vue')
 const NotFound = () => import('@/views/error/NotFound.vue')
-const Game = () => import('@/views/applications/GamePage.vue')
+const Game = () => import('@/views/GamePage/GamePage.vue')
 const GameDetail = () => import('@/views/GameDetail.vue')
 
 export const routes = [

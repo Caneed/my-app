@@ -14,7 +14,7 @@ export type RecentGames = {
  * @member playtime_mac_forever mac 系统上的时间
  * @member playtime_windows_forever win上的总时间
  */
-type RecentGame = {
+export type RecentGame = {
   appid:string
   name:string
   playtime_2weeks:string
