@@ -4,4 +4,4 @@ const pinia = createPinia()
 
 export default pinia
 // 统一导出stores
-// export * from './modules/basic_store'
+export * from '@/basic_service/stores/modules/common'

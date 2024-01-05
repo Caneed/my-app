@@ -5,7 +5,7 @@ import App from './App.vue'
 // @ts-ignore
 import Layui from '@layui/layui-vue'
 import '@layui/layui-vue/lib/index.css'
-import pinia from './basic_service/stores'
+import pinia from '@/basic_service/stores'
 import i18n from './basic_service/i18n'
 
 

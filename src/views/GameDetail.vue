@@ -1,11 +1,13 @@
 <template>
-    <img :src="gameDetail?.background" alt="">
-    <div>{{ $t('game.name')+$t('colon')+gameDetail?.name}}</div>
-    <div>{{ $t('game.about_the_game')+$t('colon')+gameDetail?.about_the_game}}</div>
-    <div>{{ $t('game.platform_support')+$t('colon') }}</div>
-    <div v-for="(isSupport,index) in gameDetail?.platforms" :key="index">
-    {{ isSupport }}</div>
-    <div v-if="isRelease(gameDetail?.release_date.coming_soon)"> {{$t('game.release_date')+$t('colon')+gameDetail?.release_date.date}}</div>
+    <div>
+        <img :src="gameDetail?.background" alt="">
+        <div>{{ $t('game.name')+$t('colon')+gameDetail?.name}}</div>
+        <div>{{ $t('game.about_the_game')+$t('colon')+gameDetail?.about_the_game}}</div>
+        <div>{{ $t('game.platform_support')+$t('colon') }}</div>
+        <div v-for="(isSupport,index) in gameDetail?.platforms" :key="index">
+        {{ isSupport }}</div>
+        <div v-if="isRelease(gameDetail?.release_date.coming_soon)"> {{$t('game.release_date')+$t('colon')+gameDetail?.release_date.date}}</div>
+    </div>
 </template>
 
 <script setup lang="ts">
