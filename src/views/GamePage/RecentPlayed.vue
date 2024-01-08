@@ -1,6 +1,6 @@
 <template>
     <div>{{ props.recentGames }}</div>
-    <BarChart :x-axis-text="getGameNames()" :data="getGameTimes()"></BarChart>
+    <BarChart v-if="recentGames.total_count !== 0" :x-axis-text="getGameNames()" :data="getGameTimes()"></BarChart>
 </template>
 
 <script setup lang="ts">

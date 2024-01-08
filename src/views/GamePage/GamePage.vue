@@ -1,11 +1,11 @@
 <template>
-    <lay-tab type="card" v-model="currentPage">
-        <lay-tab-item title="库存" id="1">
+    <lay-tab type="brief" v-model="currentPage" :activeBarTransition="true">
+        <lay-tab-item title="库存" layui-show id="1">
             <div style="padding:20px">
                 <OwnedGameList :gameInfo="gameInfo"></OwnedGameList>
             </div>
         </lay-tab-item>
-        <lay-tab-item title="最近游玩" id="2">
+        <lay-tab-item title="最近游玩" layui-show id="2">
             <div style="padding:20px">
                 <RecentPlayed :recentGames="recentGames"></RecentPlayed>
             </div>
@@ -31,8 +31,8 @@ let gameInfo = ref<GameDatas>({
 })
 // 创建最近游戏
 let recentGames = ref<RecentGames>({
-    total_count:0,
-    games:[]
+    total_count: 0,
+    games: []
 })
 
 /**
@@ -61,8 +61,8 @@ const initOwnedGames = () => {
  */
 const initRecentPlayed = async () => {
     recentGames.value = await getRecentPlayedGames()
-
 }
+
 onBeforeMount(async () => {
     initOwnedGames()
     initRecentPlayed()

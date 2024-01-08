@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test":"vitest"
   },
   "dependencies": {
     "@layui/layui-vue": "^2.13.0",

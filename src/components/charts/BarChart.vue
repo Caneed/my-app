@@ -1,20 +1,17 @@
 <template>
-    <div ref="pieChart"  style="width: 500px; height: 600px;"></div>
+    <div ref="barChart" style="width: 500px; height: 600px;"></div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import useCharts from '@/hooks/useCharts'
+import { nextTick, ref } from 'vue';
 import { ECOption } from '@/domain/basic_service/chartOption'
-import { onMounted } from 'vue';
+import { drawCharts } from '@/utils/chartsUtils';
 
-const echarts = useCharts()
-const pieChart = ref()
+const barChart = ref<HTMLElement>()
 const props = defineProps<{
     xAxisText?: string[],
-    data?: Array<number>
+    data?: Array<string>
 }>()
-console.log(props.xAxisText);
 
 const option: ECOption = {
     xAxis: {
@@ -29,14 +26,9 @@ const option: ECOption = {
     ]
 }
 
-
-
-onMounted(() => {
-    setTimeout(() => {
-        echarts.init(pieChart.value).setOption(option)
-    }, 1000);
+nextTick(() => {
+    drawCharts(option, barChart.value)
 })
-
 
 </script>
 
