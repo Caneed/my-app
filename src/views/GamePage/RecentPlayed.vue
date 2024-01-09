@@ -8,13 +8,16 @@ import BarChart from '@/components/charts/BarChart.vue';
 import { RecentGame, RecentGames } from '@/domain/steam/RecentGames';
 import { buildPlayTime } from '@/utils/gameUtils';
 
+// 参数
 const props = defineProps<{
     recentGames: RecentGames
 }>()
 
+// 游戏名映射
 const getGameNames = () => {
     return props.recentGames.games.map((item: RecentGame) => item.name)
 }
+// 游戏时间映射
 const getGameTimes = () => {
     return props.recentGames.games.map((item: RecentGame) => item.playtime_2weeks).map((item: string) => {
         return buildPlayTime(item)
@@ -22,4 +25,4 @@ const getGameTimes = () => {
 }
 </script>
 
-<style scoped></style>@/hooks/useCharts
+<style scoped></style>

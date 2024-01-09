@@ -19,6 +19,9 @@ const props = defineProps<{
 
 // 图表选项
 const option: ECOption = {
+    title:{
+        text:_this?.appContext.config.globalProperties.$t('game.labels.playtime')
+    },
     tooltip: {
         trigger: 'axis',
         axisPointer: {

@@ -12,6 +12,7 @@
         "release_date":"发行时间",
         "waiting_for_release":"未发行",
         "labels":{
+            "recent-played-games":"最近游戏",
             "playtime":"游戏时间"
         },
         "platfrom":{
