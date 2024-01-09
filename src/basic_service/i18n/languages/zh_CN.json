@@ -11,6 +11,9 @@
         "platform_support":"系统支持",
         "release_date":"发行时间",
         "waiting_for_release":"未发行",
+        "labels":{
+            "playtime":"游戏时间"
+        },
         "platfrom":{
             "windows":"windows",
             "mac":"mac",

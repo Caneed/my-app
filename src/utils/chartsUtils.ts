@@ -7,8 +7,8 @@ import useCharts from "@/hooks/useCharts"
  * @param option chartsOption
  * @param dom 要挂载的DOM结点
  */
-export const drawCharts = (option: ECOption, dom: HTMLElement | undefined) => {
-    const chart = useCharts().init(dom)
+export const drawCharts = (option: ECOption, dom: HTMLElement | undefined, theme?: string) => {
+    const chart = useCharts().init(dom,theme)
     chart.setOption(option)
     chart.resize()
     window.addEventListener('resize', () => {

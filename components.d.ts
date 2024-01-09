@@ -18,6 +18,7 @@ declare module 'vue' {
     LaySkeletonItem: typeof import('@layui/layui-vue')['LaySkeletonItem']
     LayTab: typeof import('@layui/layui-vue')['LayTab']
     LayTabItem: typeof import('@layui/layui-vue')['LayTabItem']
+    PieChart: typeof import('./src/components/charts/PieChart.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToolTips: typeof import('./src/components/base/ToolTips.vue')['default']
